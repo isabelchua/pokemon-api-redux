@@ -1,6 +1,7 @@
 import React from "react";
 
-const Pokemon = () => {
+const Pokemon = props => {
+	console.log("props", props);
 	return <div>Pokemon</div>;
 };
 
