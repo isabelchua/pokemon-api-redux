@@ -14,7 +14,6 @@ function App() {
 				<Route path={"/pokemon/:pokemon"} exact component={Pokemon} />
 				<Redirect to={"/"} />
 			</Switch>
-			hello
 		</div>
 	);
 }
