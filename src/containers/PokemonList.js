@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
 import { GetPokemonList } from "../actions/pokemonActions";
+import { Link } from "react-router-dom";
 
 const PokemonList = () => {
 	const dispatch = useDispatch();
@@ -15,8 +16,17 @@ const PokemonList = () => {
 	};
 
 	const ShowData = () => {
-		if (_.isEmpty(pokemonList.data)) {
-			return <p>have data</p>;
+		if (!_.isEmpty(pokemonList.data)) {
+			return pokemonList.data.map(poke => {
+				return (
+					<div className="list-wrapper">
+						<div className="pokemon-item">
+							<p>{poke.name}</p>
+							<Link to={`/pokemon/${poke.name}`}>View</Link>
+						</div>
+					</div>
+				);
+			});
 		}
 
 		if (pokemonList.loading) {
@@ -28,12 +38,7 @@ const PokemonList = () => {
 		}
 		return <p>unable to get data</p>;
 	};
-	return (
-		<div>
-			Pokemon List
-			{ShowData()}
-		</div>
-	);
+	return <div>{ShowData()}</div>;
 };
 
 export default PokemonList;
