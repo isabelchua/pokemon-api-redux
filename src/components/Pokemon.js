@@ -11,25 +11,35 @@ const Pokemon = props => {
 		dispatch(GetPokemon(pokemonName));
 	}, []);
 
-	console.log("props", pokemonState);
+	// console.log("props", pokemonState);
 
 	const ShowData = () => {
 		if (!_.isEmpty(pokemonState.data[pokemonName])) {
 			const pokeData = pokemonState.data[pokemonName];
+			//console.log("pokeData", pokeData);
+
 			return (
 				<div className="pokemon-wrapper">
 					<div className="item">
 						<h1>Sprites</h1>
+
+						<img
+							src={
+								pokeData.sprites.other["official-artwork"].front_default
+							}
+							alt={pokemonName}
+						/>
 						<img src={pokeData.sprites.front_default} alt="" />
 						<img src={pokeData.sprites.back_default} alt="" />
 						<img src={pokeData.sprites.front_shiny} alt="" />
 						<img src={pokeData.sprites.back_shiny} alt="" />
+						<h3>{pokeData.types[0].type.name}</h3>
 					</div>
 					<div className="item">
 						<h1>Stats</h1>
 						{pokeData.stats.map(stat => {
 							return (
-								<p>
+								<p key={stat.stat.name}>
 									{stat.stat.name} {stat.base_stat}
 								</p>
 							);
@@ -38,7 +48,7 @@ const Pokemon = props => {
 					<div className="item">
 						{pokeData.abilities.map(ability => {
 							return (
-								<p>
+								<p key={ability.ability.name}>
 									{ability.ability.name} {ability.name}
 								</p>
 							);

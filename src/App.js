@@ -1,13 +1,14 @@
 import "./App.css";
-import { Switch, Route, NavLink, Redirect } from "react-router-dom";
-import PokemonList from "./containers/PokemonList";
-import Pokemon from "./containers/Pokemon";
+import { Switch, Route, Redirect } from "react-router-dom";
+import PokemonList from "./components/PokemonList";
+import Pokemon from "./components/Pokemon";
+import Header from "./components/Header";
 
 function App() {
 	return (
 		<div className="App">
 			<nav>
-				<NavLink to={"/"}>Search</NavLink>
+				<Header />
 			</nav>
 			<Switch>
 				<Route path={"/"} exact component={PokemonList} />

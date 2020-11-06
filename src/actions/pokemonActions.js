@@ -6,7 +6,7 @@ export const GetPokemonList = page => async dispatch => {
 			type: "POKEMON_LIST_LOADING"
 		});
 
-		const perPage = 15;
+		const perPage = 50;
 		const offset = page * perPage - perPage;
 
 		// 1 = 0
