@@ -1,11 +1,11 @@
-const DefaultState = {
-	loading: false,
+const InitialState = {
+	loading: true,
 	data: [],
 	errorMsg: "",
 	count: 0
 };
 
-const PokemonListReducer = (state = DefaultState, action) => {
+const PokemonListReducer = (state = InitialState, action) => {
 	switch (action.type) {
 		case "POKEMON_LIST_LOADING":
 			return {
@@ -26,6 +26,15 @@ const PokemonListReducer = (state = DefaultState, action) => {
 				data: action.payload.results,
 				errorMsg: "",
 				count: action.payload.count
+			};
+
+		case "POKEMON_ALL_SUCCESS":
+			//console.log(action.payload);
+			return {
+				...state,
+				data: action.payload,
+				loading: false,
+				errorMsg: ""
 			};
 
 		default:

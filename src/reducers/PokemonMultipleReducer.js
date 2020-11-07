@@ -1,5 +1,5 @@
-const DefaultState = {
-	loading: false,
+const InitialState = {
+	loading: true,
 	data: {},
 	errorMsg: ""
 };
@@ -9,7 +9,7 @@ const DefaultState = {
 // 	balbasaur: {abilities: []}
 // }
 
-const PokemonMultipleReducer = (state = DefaultState, action) => {
+const PokemonMultipleReducer = (state = InitialState, action) => {
 	switch (action.type) {
 		case "POKEMON_MULTIPLE_LOADING":
 			return {

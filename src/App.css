@@ -93,10 +93,10 @@ nav a {
 
 .front-card {
 	padding: 20px;
+	border-radius: 3px;
 }
 
 .card-inner {
-	padding: 10px;
 }
 
 .img-container img {

@@ -49,3 +49,33 @@ export const GetPokemon = pokemon => async dispatch => {
 		});
 	}
 };
+
+export const GetAllPokemon = startId => async dispatch => {
+	try {
+		dispatch({
+			type: "POKEMON_LIST_LOADING"
+		});
+		
+		let poke = [];
+		const getData = async () => {
+			for (let i = startId; i <= startId + 49; i++) {
+				let result = await axios(` https://pokeapi.co/api/v2/pokemon/${i}`);
+				poke.push(result.data);
+			}
+			// setData(poke);
+			// setIsLoading(true);
+			//console.log(poke);
+		};
+
+		getData();
+
+		dispatch({
+			type: "POKEMON_ALL_SUCCESS",
+			payload: poke
+		});
+	} catch (error) {
+		dispatch({
+			type: "POKEMON_MULTIPLE_FAIL"
+		});
+	}
+};
