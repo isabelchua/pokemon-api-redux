@@ -80,24 +80,28 @@ const PokemonList = props => {
 		}
 
 		// if (!_.isEmpty(pokemonList.data)) {
+		// if (pokemonList.data) {
+		// 	console.log("pokemon list 2", pokemonList.data);
+		// 	return pokemonList.data.map(poke => {
+		// 		return (
+		// 			<div className="list-wrapper">
+		// 				<div className="pokemon-item">
+		// 					<p>a {poke.name}</p>
+		// 					{/* <img
+		// 						src={
+		// 							poke.sprites.other["official-artwork"].front_default
+		// 						}
+		// 						alt=""
+		// 					/> */}
+		// 					<Link to={`/pokemon/${poke.name}`}>View</Link>
+		// 				</div>
+		// 			</div>
+		// 		);
+		// 	});
+		// }
 		if (pokemonList.data) {
 			console.log("pokemon list 2", pokemonList.data);
-			return pokemonList.data.map(poke => {
-				return (
-					<div className="list-wrapper">
-						<div className="pokemon-item">
-							<p>a {poke.name}</p>
-							{/* <img
-								src={
-									poke.sprites.other["official-artwork"].front_default
-								}
-								alt=""
-							/> */}
-							<Link to={`/pokemon/${poke.name}`}>View</Link>
-						</div>
-					</div>
-				);
-			});
+			return pokemonList.data.map(poke => <div>{poke.name}</div>);
 		}
 
 		if (pokemonList.errorMsg !== "") {
@@ -156,7 +160,12 @@ const PokemonList = props => {
 					Search
 				</button>
 			</div>
-			{ShowData()}
+
+			{pokemonList.data.map(poke => (
+				<div>{poke.name}</div>
+			))}
+
+			{/* {ShowData()} */}
 			{!_.isEmpty(pokemonList.data) && (
 				<ReactPaginate
 					pageCount={Math.ceil(pokemonList.count / 15)}
